@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Editor</title>
+    <meta name="description"
+        content="A simple online editor to write instantly without downloading an app. This editor does not store any data, so please copy and keep your final copy of your content before closing the tab." />
+    <meta property="og:title" content="DevOps Editor" />
+    <meta property="og:description"
+        content="A simple online editor to write instantly without downloading an app. This editor does not store any data, so please copy and keep your final copy of your content before closing the tab." />
+    <meta property="og:site_name" content="DevOps Editor" />
+    <meta property="og:url" content="http://editor.devops.com.bd" />
+    <meta property="og:image" content="http://editor.devops.com.bd/logo.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="DevOps Editor" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/trix@2.0.0-alpha.1/dist/trix.css">
+    </link>
+    <script src="https://unpkg.com/trix@2.0.0-alpha.1/dist/trix.umd.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        body,
+        trix-editor {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        [data-trix-button-group="file-tools"] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div x-data="{ value: '' }" x-init="$refs.trix.editor.loadHTML(value)" x-id="['trix']" class="max-w-2xl mx-auto"
+        @trix-change="value = $refs.input.value" @trix-file-accept.prevent>
+        <input :id="$id('trix')" type="hidden" x-ref="input">
+        <trix-editor x-data="{
+            resize() {
+                $el.style.height = '250px'
+                $el.style.height = $el.scrollHeight + 'px'
+            }
+        }" x-init="resize()" x-on:input="resize()" x-on:change="resize()" x-on:click="resize()" x-ref="trix"
+            :input="$id('trix')" class="bg-white">
+        </trix-editor>
+    </div>
+</body>
+
+</html>
